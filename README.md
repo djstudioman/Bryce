@@ -6,9 +6,9 @@ A faithful recreation of the legendary Bryce 7 3D modeling software interface us
 
 This project resurrects the iconic UI of Bryce 7, the beloved 3D landscape modeling tool from the late 90s/early 2000s. We're building a "digital cathedral" - a native macOS experience that honors the original's distinctive aesthetic while leveraging modern rendering capabilities.
 
-### Current Phase: Archaeological Documentation - UI Shell ✅
+### Current Phase: Controls & Interaction 🎯
 
-**Status**: Phase 1 Complete - The interface skeleton is assembled!
+**Status**: Phase 2 In Progress - The sacred buttons have been resurrected!
 
 ## 🛠️ Tech Stack
 
@@ -29,6 +29,10 @@ BryceReborn/
 │   │   ├── BryceColors.swift      # Archaeological color palette
 │   │   ├── BryceMetrics.swift     # Spacing, sizes, radii
 │   │   └── BryceFonts.swift       # Typography system
+│   ├── Controls/
+│   │   ├── BryceButton.swift      # Iconic beveled buttons
+│   │   ├── BryceButtonGroup.swift # Button layout helpers
+│   │   └── BryceIcons.swift       # Programmatic icon generation
 │   ├── Palettes/
 │   │   └── PaletteViews.swift     # All palette UI components
 │   └── Viewport/
@@ -99,6 +103,9 @@ swiftc -o BryceReborn \
   UI/Theme/BryceColors.swift \
   UI/Theme/BryceMetrics.swift \
   UI/Theme/BryceFonts.swift \
+  UI/Controls/BryceButton.swift \
+  UI/Controls/BryceButtonGroup.swift \
+  UI/Controls/BryceIcons.swift \
   UI/Palettes/PaletteViews.swift \
   UI/Viewport/ViewportView.swift \
   -framework AppKit
@@ -113,29 +120,35 @@ swiftc -o BryceReborn \
 |-----------|--------|-------------|
 | 🎨 **Color System** | ✅ Complete | Archaeological color palette from original |
 | 📏 **Metrics System** | ✅ Complete | Spacing, sizing, and proportions |
-| 🪟 **Main Window** | ✅ Shell | Dark themed window with proper styling |
+| 🪟 **Main Window** | ✅ Complete | Dark themed window with proper styling |
 | 📐 **Layout System** | ✅ Complete | 5-region layout matching original |
 | 🎛️ **Palette Base** | ✅ Complete | Beveled borders, authentic styling |
-| 🔲 **Viewport** | ✅ Grid | Placeholder with grid (Metal coming Phase 2) |
+| 🔲 **Viewport** | ✅ Grid | Placeholder with grid (Metal coming Phase 3) |
+| 🔘 **BryceButton** | ✅ Complete | Beveled metallic buttons with all states |
+| 🖼️ **Icon System** | ✅ Complete | Programmatic primitive & tool icons |
+| ✍️ **Typography** | ✅ Complete | Complete font system |
 | ⚙️ **Control Palette** | 🏗️ Shell | Top bar framework ready |
-| 🎨 **Create Palette** | 🏗️ Shell | Primitive icons placeholder |
-| ✏️ **Edit Palette** | 🏗️ Shell | Transform tools placeholder |
+| 🎨 **Create Palette** | ✅ Complete | 5 primitive creation buttons with icons |
+| ✏️ **Edit Palette** | ✅ Complete | 3 transform tool buttons (Move/Rotate/Scale) |
 | ⏱️ **Timeline** | 🏗️ Shell | Animation bar framework |
 
 ## 🗺️ Roadmap
 
-### Phase 1: UI Shell ✅ (CURRENT)
+### Phase 1: UI Shell ✅
 - [x] Color palette system
 - [x] Layout architecture
 - [x] Palette borders and styling
 - [x] Viewport grid placeholder
 
-### Phase 2: Controls & Interaction 🎯 (NEXT)
-- [ ] **BryceButton** - The iconic beveled metallic buttons
-- [ ] Create palette primitive buttons (sphere, cube, terrain, tree)
-- [ ] Edit palette transform tools (move, rotate, scale)
+### Phase 2: Controls & Interaction 🎯 (CURRENT)
+- [x] **BryceButton** - The iconic beveled metallic buttons
+- [x] Create palette primitive buttons (sphere, cube, cylinder, terrain, tree)
+- [x] Edit palette transform tools (move, rotate, scale)
+- [x] Icon generation system (programmatic drawing)
+- [x] Complete typography system
 - [ ] Control palette view/render controls
 - [ ] Nano preview thumbnail
+- [ ] BryceSlider - Pill-shaped value sliders
 
 ### Phase 3: Metal Rendering 🔮
 - [ ] Metal pipeline setup

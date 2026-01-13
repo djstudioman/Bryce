@@ -1,9 +1,29 @@
 import AppKit
 
-/// Typography system for the Bryce interface
+/// Typography faithful to the original Bryce aesthetic
 struct BryceFonts {
 
     // MARK: - UI Fonts
+
+    /// Tiny labels on palettes
+    static let label = NSFont.systemFont(ofSize: 9, weight: .medium)
+
+    /// Button text (rarely used - most are icons)
+    static let button = NSFont.systemFont(ofSize: 10, weight: .semibold)
+
+    /// Value readouts on sliders
+    static let value = NSFont.monospacedDigitSystemFont(ofSize: 10, weight: .regular)
+
+    /// Section headers
+    static let sectionHeader = NSFont.systemFont(ofSize: 11, weight: .semibold)
+
+    /// Dialog text
+    static let body = NSFont.systemFont(ofSize: 12, weight: .regular)
+
+    /// Window titles
+    static let title = NSFont.systemFont(ofSize: 13, weight: .semibold)
+
+    // MARK: - Legacy Aliases (for compatibility)
 
     /// Small condensed font for labels and buttons
     static let smallCondensed = NSFont.systemFont(ofSize: 10, weight: .medium)

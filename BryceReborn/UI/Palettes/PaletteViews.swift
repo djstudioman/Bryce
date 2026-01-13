@@ -75,41 +75,49 @@ class CreatePaletteView: BrycePaletteView {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setupControls()
+        setupButtons()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupControls()
+        setupButtons()
     }
 
-    private func setupControls() {
-        // Placeholder labels for primitives
-        let labels = ["○", "▢", "△", "◇", "⛰️", "🌲"]
-        var previousView: NSView?
+    private func setupButtons() {
+        // Create primitive buttons with icons
+        let sphereBtn = BryceButton(style: .standard, icon: BryceIcons.sphere)
+        sphereBtn.toolTip = "Create Sphere"
+        sphereBtn.action = { print("Create Sphere") }
 
-        for (index, symbol) in labels.enumerated() {
-            let label = NSTextField(labelWithString: symbol)
-            label.textColor = BryceColors.textPrimary
-            label.font = NSFont.systemFont(ofSize: 18)
-            label.alignment = .center
-            label.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(label)
+        let cubeBtn = BryceButton(style: .standard, icon: BryceIcons.cube)
+        cubeBtn.toolTip = "Create Cube"
+        cubeBtn.action = { print("Create Cube") }
 
-            NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: centerXAnchor),
-                label.widthAnchor.constraint(equalToConstant: 40),
-                label.heightAnchor.constraint(equalToConstant: 40)
-            ])
+        let cylinderBtn = BryceButton(style: .standard, icon: BryceIcons.cylinder)
+        cylinderBtn.toolTip = "Create Cylinder"
+        cylinderBtn.action = { print("Create Cylinder") }
 
-            if let previous = previousView {
-                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: BryceMetrics.buttonSpacing).isActive = true
-            } else {
-                label.topAnchor.constraint(equalTo: topAnchor, constant: BryceMetrics.paletteInnerPadding).isActive = true
-            }
+        let terrainBtn = BryceButton(style: .standard, icon: BryceIcons.terrain)
+        terrainBtn.toolTip = "Create Terrain"
+        terrainBtn.action = { print("Create Terrain") }
 
-            previousView = label
-        }
+        let treeBtn = BryceButton(style: .standard, icon: BryceIcons.tree)
+        treeBtn.toolTip = "Create Tree"
+        treeBtn.action = { print("Create Tree") }
+
+        // Stack them vertically with proper spacing
+        let stack = NSStackView(views: [sphereBtn, cubeBtn, cylinderBtn, terrainBtn, treeBtn])
+        stack.orientation = .vertical
+        stack.spacing = BryceMetrics.buttonSpacing
+        stack.alignment = .centerX
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stack.topAnchor.constraint(equalTo: topAnchor, constant: BryceMetrics.paletteInnerPadding),
+        ])
     }
 }
 
@@ -118,41 +126,44 @@ class EditPaletteView: BrycePaletteView {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setupControls()
+        setupButtons()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupControls()
+        setupButtons()
     }
 
-    private func setupControls() {
-        // Placeholder labels for tools
-        let tools = ["Move", "Rotate", "Scale"]
-        var previousView: NSView?
+    private func setupButtons() {
+        // Create transform tool buttons
+        let moveBtn = BryceButton(style: .standard, icon: BryceIcons.move)
+        moveBtn.toolTip = "Move Tool"
+        moveBtn.isToggle = true
+        moveBtn.action = { print("Move Tool") }
 
-        for tool in tools {
-            let label = NSTextField(labelWithString: tool)
-            label.textColor = BryceColors.textPrimary
-            label.font = BryceFonts.tiny
-            label.alignment = .center
-            label.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(label)
+        let rotateBtn = BryceButton(style: .standard, icon: BryceIcons.rotate)
+        rotateBtn.toolTip = "Rotate Tool"
+        rotateBtn.isToggle = true
+        rotateBtn.action = { print("Rotate Tool") }
 
-            NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: centerXAnchor),
-                label.widthAnchor.constraint(equalToConstant: 60),
-                label.heightAnchor.constraint(equalToConstant: 40)
-            ])
+        let scaleBtn = BryceButton(style: .standard, icon: BryceIcons.scale)
+        scaleBtn.toolTip = "Scale Tool"
+        scaleBtn.isToggle = true
+        scaleBtn.action = { print("Scale Tool") }
 
-            if let previous = previousView {
-                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: BryceMetrics.buttonSpacing).isActive = true
-            } else {
-                label.topAnchor.constraint(equalTo: topAnchor, constant: BryceMetrics.paletteInnerPadding).isActive = true
-            }
+        // Stack them vertically with proper spacing
+        let stack = NSStackView(views: [moveBtn, rotateBtn, scaleBtn])
+        stack.orientation = .vertical
+        stack.spacing = BryceMetrics.buttonSpacing
+        stack.alignment = .centerX
+        stack.translatesAutoresizingMaskIntoConstraints = false
 
-            previousView = label
-        }
+        addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stack.topAnchor.constraint(equalTo: topAnchor, constant: BryceMetrics.paletteInnerPadding),
+        ])
     }
 }
 
